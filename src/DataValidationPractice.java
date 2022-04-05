@@ -9,8 +9,10 @@ public class DataValidationPractice {
         }
     }
 
-    public void isCorrectPIDFormat(String PID, String re, Pattern pt, Matcher mt) {
-
+    public void isCorrectPIDFormat(String PID, String re2, Pattern pt2, Matcher mt2) {
+        if(!mt2.matches()){
+            System.out.println("Write to file");
+        }
     }
 
     public void isCorrectDateFormat(String date) {
@@ -43,12 +45,16 @@ public class DataValidationPractice {
         DataValidationPractice demo = new DataValidationPractice();
 
 //        String re = "\\w\\w\\w\\w-\\w\\w\\w\\w";
-//        String text = "MMMDXLCHP";
+//        String text = "MMMD-LCHP";
 //        Pattern pt = Pattern.compile(re);
 //        Matcher mt = pt.matcher(text);
-//
 //        demo.isCorrectCisIDFormat(text, re, pt, mt);
 
+        String re2 = "\\w\\w\\w\\w-\\w\\w\\w";
+        String text2 = "LCVQ-SGZ";
+        Pattern pt2 = Pattern.compile(re2);
+        Matcher mt2 = pt2.matcher(text2);
+        demo.isCorrectPIDFormat(text2, re2, pt2, mt2);
 
 //        // Test if ahnentafel is working
 //        demo.isAhnentafelValid("-10"); // Manually prints out message
