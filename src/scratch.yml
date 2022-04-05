@@ -1,0 +1,6 @@
+// Practice YAML
+build:
+  type: maven
+  require_stable_integration: true
+  run_clirr: true
+  directory: <relative path>
