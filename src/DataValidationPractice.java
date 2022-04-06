@@ -67,13 +67,6 @@ public class DataValidationPractice {
     public static void main(String[] args) {
         DataValidationPractice demo = new DataValidationPractice();
 
-        demo.isCorrectDateFormat("2014-09-12", demo.dateFormat);
-//        // Test if ahnentafel is working
-//        demo.isAhnentafelValid("-10"); // Manually prints out message
-//        demo.isAhnentafelValid("-10T"); // Error Message
-//        demo.isAhnentafelValid("0"); // Error
-//        demo.isAhnentafelValid("1"); // 1
-//        demo.isAhnentafelValid("100"); // 100
-//        demo.isAhnentafelValid(""); // 100
+
     }
 }
