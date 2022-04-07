@@ -86,7 +86,8 @@ public class DataValidationPractice {
 
     public static void main(String[] args) {
         DataValidationPractice demo = new DataValidationPractice();
-        demo.isCorrectCisIDFormat("LL08-HDK1", demo.cisIDFormat, 10);
+//        demo.isCorrectCisIDFormat("LL08-HDK1", demo.cisIDFormat, 10);
+        demo.isAhnentafelValid("", 10);
 
 //        try {
 //            String path = ""; // File to read from
