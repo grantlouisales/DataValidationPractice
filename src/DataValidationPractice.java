@@ -16,16 +16,12 @@ public class DataValidationPractice {
     public int ahnentafelIndex = 0;
 
 
-    public void isCorrectCisIDFormat(String cisID, String re, int currLine) {
-        if(!cisID.matches(re)) {
-            System.out.println("Write to file " + currLine);
-        }
+    public void isCorrectCisIDFormat(String cisID, String re) {
+        if(!cisID.matches(re)) System.out.println("Write to file ");
     }
 
-    public void isCorrectPIDFormat(String PID, String re2, int currLine) {
-        if (!PID.matches(re2)) {
-            System.out.println("Write to file " + currLine);
-        }
+    public void isCorrectPIDFormat(String PID, String re2) {
+        if (!PID.matches(re2)) System.out.println("Write to file ");
     }
 
     public void isCorrectDateFormat(String value, String format) {
@@ -45,25 +41,21 @@ public class DataValidationPractice {
         }
     }
 
-    public void isAhnentafelValid(String ahnentafel, int currLine) {
+    public void isAhnentafelValid(String ahnentafel) {
 
         try {
-            float ahnentafelInt = Float.parseFloat(ahnentafel);
-            boolean result = ahnentafelInt >= 1;
+            float ahnentafelFloat = Float.parseFloat(ahnentafel);
+            boolean result = ahnentafelFloat >= 1;
 
-            if (!result) {
-                System.out.println("Ahnentafel not big enough to be valid " + currLine);
-            }
+            if (!result) System.out.println("Ahnentafel not big enough to be valid ");
 
         } catch (NumberFormatException ex) {
-            System.out.println("Not an Integer " + currLine);
+            System.out.println("Not an Integer");
         }
     }
 
-    public void isValueEmpty(String value, int currLine) {
-        if (value.isEmpty()) {
-            System.out.println(currLine);
-        }
+    public void isValueEmpty(String value) {
+        if (value.isEmpty()) System.out.println("Write to file");
     }
 
     public void findAndSetIndexes(String[] headerLine) {
@@ -71,14 +63,11 @@ public class DataValidationPractice {
         for (String value : headerLine) {
             String cleanedValue = value.replaceAll("\"", "");
 
-            if (cleanedValue.equals("patron_id")) {
-                patronIdIndex = currIndex;
-            } else if (cleanedValue.equals("ancestor_pid")) {
-                ancestorPidIndex = currIndex;
-            } else if (cleanedValue.equals("ancestor_name")) {
-                ancestorNameIndex = currIndex;
-            } else if (cleanedValue.equals("ahnentafel")) {
-                ahnentafelIndex = currIndex;
+            switch (cleanedValue) {
+                case "patron_id" -> patronIdIndex = currIndex;
+                case "ancestor_pid" -> ancestorPidIndex = currIndex;
+                case "ancestor_name" -> ancestorNameIndex = currIndex;
+                case "ahnentafel" -> ahnentafelIndex = currIndex;
             }
             currIndex++;
         }
@@ -86,7 +75,7 @@ public class DataValidationPractice {
 
     public static void main(String[] args) {
         DataValidationPractice demo = new DataValidationPractice();
-        demo.isCorrectCisIDFormat("LL08-HDK1", demo.cisIDFormat, 10);
+        demo.isCorrectCisIDFormat("LL08-HDK1", demo.cisIDFormat);
 
 //        try {
 //            String path = ""; // File to read from
