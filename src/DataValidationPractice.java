@@ -17,28 +17,24 @@ public class DataValidationPractice {
 
 
     public void isCorrectCisIDFormat(String cisID, String re, int currLine) {
-        Pattern pt = Pattern.compile(re);
-        Matcher mt = pt.matcher(cisID);
-
-        if (!mt.matches()) {
-            System.out.println(currLine);
+        if(!cisID.matches(re)) {
+            System.out.println("Write to file " + currLine);
         }
     }
 
     public void isCorrectPIDFormat(String PID, String re2, int currLine) {
-        Pattern pt2 = Pattern.compile(re2);
-        Matcher mt2 = pt2.matcher(PID);
-
-        if (!mt2.matches()) {
-            System.out.println(currLine);
+        if (!PID.matches(re2)) {
+            System.out.println("Write to file " + currLine);
         }
     }
 
     public void isCorrectDateFormat(String value, String format) {
     // Use this link to check date format -> https://stackoverflow.com/questions/20231539/java-check-the-date-format-of-current-string-is-according-to-required-format-or#:~:text=is%20not%20useful-,Show%20activity%20on%20this%20post.,in%20different%20format%20or%20invalid.%20%7D
+
         Date date = null;
         try {
             SimpleDateFormat sdf = new SimpleDateFormat(format);
+
             date = sdf.parse(value);
             if (!value.equals(sdf.format(date))) {
                 System.out.println("Write to file");
@@ -52,7 +48,7 @@ public class DataValidationPractice {
     public void isAhnentafelValid(String ahnentafel, int currLine) {
 
         try {
-            int ahnentafelInt = Integer.parseInt(ahnentafel);
+            float ahnentafelInt = Float.parseFloat(ahnentafel);
             boolean result = ahnentafelInt >= 1;
 
             if (!result) {
@@ -90,12 +86,13 @@ public class DataValidationPractice {
 
     public static void main(String[] args) {
         DataValidationPractice demo = new DataValidationPractice();
+        demo.isCorrectCisIDFormat("LL08-HDK1", demo.cisIDFormat, 10);
 
 //        try {
 //            String path = ""; // File to read from
 //            String line = "";
 //            int currLine = 1;
-//
+
 //            BufferedReader br = new BufferedReader(new FileReader(path));
 //            String[] headerValues = br.readLine().split("\t"); // Removes the header file line
 //
@@ -108,7 +105,14 @@ public class DataValidationPractice {
 //                String ancestorPid = lineValues[demo.ancestorPidIndex].replaceAll("\"", "");
 //                String ancestorName = lineValues[demo.ancestorNameIndex].replaceAll("\"", "");
 //                String ahnentafel = lineValues[demo.ahnentafelIndex].replaceAll("\"", "");
-
+//
+//                demo.isCorrectCisIDFormat(patronId, demo.cisIDFormat, currLine);
+//                demo.isCorrectPIDFormat(ancestorPid, demo.pidFormat, currLine);
+//                demo.isValueEmpty(ancestorName, currLine);
+//                demo.isAhnentafelValid(ahnentafel, currLine);
+//                currLine++;
+//            }
+//
 
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace();
