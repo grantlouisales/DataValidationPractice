@@ -37,7 +37,7 @@ public class DataValidationPractice {
             }
 
         } catch (ParseException ex) {
-            System.out.println("Write data to file");
+            System.out.println("Write to file");
         }
     }
 
@@ -76,36 +76,36 @@ public class DataValidationPractice {
     public static void main(String[] args) {
         DataValidationPractice demo = new DataValidationPractice();
 
-//        try {
-//            String path = ""; // File to read from
-//            String line = "";
-//            int currLine = 1;
+        try {
+            String path = ""; // File to read from
+            String line = "";
+            int currLine = 1;
 
-//            BufferedReader br = new BufferedReader(new FileReader(path));
-//            String[] headerValues = br.readLine().split("\t"); // Removes the header file line
-//
-//            demo.findAndSetIndexes(headerValues);
-//
-//            while((line = br.readLine()) != null) {
-//                String[] lineValues = line.split("\t"); // Removes the header file line
-//
-//                String patronId = lineValues[demo.patronIdIndex].replaceAll("\"", "");
-//                String ancestorPid = lineValues[demo.ancestorPidIndex].replaceAll("\"", "");
-//                String ancestorName = lineValues[demo.ancestorNameIndex].replaceAll("\"", "");
-//                String ahnentafel = lineValues[demo.ahnentafelIndex].replaceAll("\"", "");
-//
-//                demo.isCorrectCisIDFormat(patronId, demo.cisIDFormat, currLine);
-//                demo.isCorrectPIDFormat(ancestorPid, demo.pidFormat, currLine);
-//                demo.isValueEmpty(ancestorName, currLine);
-//                demo.isAhnentafelValid(ahnentafel, currLine);
-//                currLine++;
-//            }
-//
+            BufferedReader br = new BufferedReader(new FileReader(path));
+            String[] headerValues = br.readLine().split("\t"); // Removes the header file line
 
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+            demo.findAndSetIndexes(headerValues);
+
+            while((line = br.readLine()) != null) {
+                String[] lineValues = line.split("\t"); // Removes the header file line
+
+                String patronId = lineValues[demo.patronIdIndex].replaceAll("\"", "");
+                String ancestorPid = lineValues[demo.ancestorPidIndex].replaceAll("\"", "");
+                String ancestorName = lineValues[demo.ancestorNameIndex].replaceAll("\"", "");
+                String ahnentafel = lineValues[demo.ahnentafelIndex].replaceAll("\"", "");
+
+
+                demo.isCorrectCisIDFormat(patronId, demo.cisIDFormat);
+                demo.isCorrectPIDFormat(ancestorPid, demo.pidFormat);
+                demo.isValueEmpty(ancestorName);
+                demo.isAhnentafelValid(ahnentafel);
+                currLine++;
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
